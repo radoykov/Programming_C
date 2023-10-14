@@ -41,7 +41,7 @@ int binsearch(char arr[7][10], int arrlen, char search[]) {
     int mid = (right + left) / 2;
     if (strcmp(arr[mid], search) == 0) return mid;
 
-     if (strcmp(search, arr[mid]) < 0) {//true x<mid
+     if (strcmp(search, arr[mid]) < 0) {
       right = mid - 1;
     } else {
       left = mid + 1;
