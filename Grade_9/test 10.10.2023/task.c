@@ -1,16 +1,32 @@
 #include <stdio.h>
 
 void sortarr(int arr[], int len);
-void simp(int arr[], int len, int barr[], int log);
-int midd(int barr[], int log);
-int end(int arr[], int len);
+int isprime(int number);
+int countdigits(int number);
+int getdigitssumonprimeindexes(int arr[], int len);
 
 void main()
 {
     int arr[] = {3, 17, 22, 342, 1024, 2025, 19, 25, 35, 85};
-    int len = 10, a;
-    a = end(arr, len);
-    printf("%d", a);
+    int len = 10;
+    printf("%d", getdigitssumonprimeindexes(arr, len));
+}
+
+int getdigitssumonprimeindexes(int arr[], int len)
+{
+    int totalnumberscount = 0;
+
+    sortarr(arr, len);
+
+    for (int i = 0; i < len; i++)
+    {
+        if (isprime(i) == 1)
+        {
+            totalnumberscount += countdigits(arr[i]);
+        }
+    }
+
+    return totalnumberscount;
 }
 
 void sortarr(int arr[], int len)
@@ -19,7 +35,7 @@ void sortarr(int arr[], int len)
     for (int i = 1; i < len; i++)
     {
         change = 0;
-        for (int j = 0; i < len - i; i++)
+        for (int j = 0; j < len - i; j++)
         {
             if (arr[j] < arr[j + 1])
             {
@@ -34,51 +50,36 @@ void sortarr(int arr[], int len)
     }
 }
 
-void simp(int arr[], int len, int barr[], int log)
+int isprime(int number)
 {
-    for (int i = 0; i < len; i++)
+    if (number < 2)
     {
-        int j = 2;
-
-        while (i != 0)
-        {
-            if (i % j != 0)
-                j++;
-            else if (i == j)
-            {
-                int k = 0;
-                barr[k] = arr[i];
-                log++;
-                k++;
-            }
-            else
-                i++;
-        }
-    }
-}
-int midd(int barr[], int log)
-{
-    int pr = 0;
-    for (int i = log; log!=0; i--)
-    {
-        while (barr[i] != 0)
-        {
-            pr += barr[i] % 10;
-            barr[i] /= 10;
-            i++;
-        }
-        if(log!=0)midd(barr, log-1);
+        return 0;
     }
 
-    return pr;
+    int k = 2;
+    while (number % k != 0)
+    {
+        k++;
+    }
+
+    if (number == k)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-int end(int arr[], int len)
+int countdigits(int number)
 {
-    int barr[20], log = 0;
-
-    sortarr(arr, len);
-    simp(arr, len, barr, log);
-    int ho = midd(barr, log);
-    return 0;
+    int count = 0;
+    while (number != 0)
+    {
+        number /= 10;
+        count++;
+    }
+    return count;
 }
