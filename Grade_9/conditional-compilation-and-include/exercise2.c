@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define ARRAY_SIZE 8
+#define ARRAY_SIZE 9
 #define PARAMETARS \
 for(int i = 0; i < ARRAY_SIZE; i++) \
 {\
@@ -18,8 +18,8 @@ int main()
     PARAMETARS
     for (int i = 0; i < ARRAY_SIZE; i++)
     printf("\n%d", arr[i]);
-    return 0;
     #else
     printf("\nError");
     #endif
+    return 0;
 }
