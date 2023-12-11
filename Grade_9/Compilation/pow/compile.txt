@@ -1,2 +1,2 @@
  gcc pow.c -lm -o pow.exe
- ./pow.exes
+ ./pow.exe
