@@ -20,7 +20,7 @@ char *readLine(void)
         size++;
         c = getchar();
 
-        line = realloc(line, size * sizeof(char));
+        line = (char *)realloc(line, size * sizeof(char));
         CHECK(line)
 
         line[size - 1] = c;
