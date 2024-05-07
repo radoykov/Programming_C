@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # VS Code exclusion
-/.vscode
+.vscode
 
 # Local History for Visual Studio Code
 .history/
