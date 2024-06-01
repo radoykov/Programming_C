@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dynarr.h"
-#define CHECK(arr)                     \
+#define CHECK(file)                     \
     if (file == NULL)                  \
     {                                  \
         printf("Cannot open file \n"); \
@@ -124,7 +124,7 @@ int main()
             break;
         case 4:
             FILE *file = fopen("text.txt", "w");
-            CHECK(arr);
+            CHECK(file);
             Book book;
             for (int i = 0; i < array.size; i++)
             {
