@@ -1,56 +1,70 @@
 #include <stdio.h>
 #include "doublelinkedlist.h"
 
-void printList(uint index, listType value)
+void printElement(uint index, ListType value)
 {
-    printf("index(%u)=>%lf", index, value);
+  printf("[%u]=>%lf ", index, value);
 }
 
 void printLinkedList(List *list)
 {
-    forEeach(list, printList);
-    printf("\n");
+  forEeach(list, printElement);
+  printf("\n");
 }
 
-int main()
+void printLinkedListReversed(List *list)
 {
-    printf("Executing tests: \n");
-    List list = init();
-    printf("Is head NULL: %d\n", list.head == NULL);
-    printf("Size: %u\n", list.size);
+  forEeachReversed(list, printElement);
+  printf("\n");
+}
 
-    pushFront(&list, 10);
-    pushFront(&list, 15);
-    pushFront(&list, 20);
-    printLinkedList(&list);
+int main(void)
+{
 
-    Node *secondNode = getElement(&list, 1);
-    printf("Second value : %lf\n", secondNode->value);
+  printf("Executing tests: \n");
+  List list = init();
+  printf("Is head NULL: %d\n", list.head == NULL);
+  printf("Size: %u\n", list.size);
 
-    push(&list, 1, 99);
-    printLinkedList(&list);
+  pushFront(&list, 10);
+  pushFront(&list, 15);
+  pushFront(&list, 20);
+  printLinkedList(&list);
+  printLinkedListReversed(&list);
 
-    pushBack(&list, 105);
-    printLinkedList(&list);
+  Node *secondNode = getElement(&list, 1);
+  printf("Second value : %lf\n", secondNode->value);
 
-    setElement(&list, 2, 999);
-    printLinkedList(&list);
+  push(&list, 1, 99);
+  printLinkedList(&list);
+  printLinkedListReversed(&list);
 
-    listType firstElement = popFront(&list);
-    printf("First element: %lf \n", firstElement);
-    printLinkedList(&list);
+  pushBack(&list, 105);
+  printLinkedList(&list);
+  printLinkedListReversed(&list);
 
-    listType thirdElement = pop(&list, 2);
-    printf("Third element: %lf \n", thirdElement);
-    printLinkedList(&list);
+  setElement(&list, 2, 999);
+  printLinkedList(&list);
+  printLinkedListReversed(&list);
 
-    listType lastElement = popBack(&list);
-    printf("Last element: %lf \n", lastElement);
-    printLinkedList(&list);
+  ListType firstElement = popFront(&list);
+  printf("First element: %lf \n", firstElement);
+  printLinkedList(&list);
+  printLinkedListReversed(&list);
 
-    release(&list);
-    printf("Is head NULL: %d\n", list.head == NULL);
-    printf("Size: %u\n", list.size);
+  ListType thirdElement = pop(&list, 2);
+  printf("Third element: %lf \n", thirdElement);
+  printLinkedList(&list);
+  printLinkedListReversed(&list);
 
-    return 0;
+  ListType lastElement = popBack(&list);
+  printf("Last element: %lf \n", lastElement);
+  printLinkedList(&list);
+  printLinkedListReversed(&list);
+
+  release(&list);
+  printf("Is head NULL: %d\n", list.head == NULL);
+  printf("Size: %u\n", list.size);
+
+  return 0;
 }
