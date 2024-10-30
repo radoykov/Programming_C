@@ -153,11 +153,13 @@ ListType pop(List *list, uint index)
 {
     if (index == 0)
     {
-        popFront(list);
+        int res = popFront(list);
+        return res;
     }
     else if (index == list->size - 1)
-    {
-        popBack(list);
+    {   
+        int res2 = popBack(list);
+        return res2;
     }
 
     Node *nodeToDel = getElement(list, index);
